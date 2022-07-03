@@ -1,0 +1,47 @@
+name: Build
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  run-test:
+    name: "Run test"
+    runs-on: macos-12
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: zip
+        shell: bash
+        run: |
+          tar -cvzf demo_dir.tar.gz demo_dir
+
+      - name: Upload to artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: "demo_dir"
+          path: "demo_dir.tar.gz"
+
+  publish:
+    name: "Publish"
+    runs-on: macos-12
+    needs:
+      - run-test
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        name: "Download demo_dir"
+        with:
+          name: "demo_dir"
+          path: ./demo_dir.tar.gz
+      - name: zip
+        shell: bash
+        run: |
+          ls -lh
+          tar -zxvf ./demo_dir.tar.gz
