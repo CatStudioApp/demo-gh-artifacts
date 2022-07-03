@@ -45,5 +45,6 @@ jobs:
         run: |
           ls -lh
           ls demo_dir_cached
-          tar -zxvf ./demo_dir_cached/demo_dir.tar.gz
+          tar -xf ./demo_dir_cached/demo_dir.tar.gz --directory ./unzipped
           ls -lh
+          ls ./unzipped
