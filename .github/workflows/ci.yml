@@ -44,5 +44,5 @@ jobs:
         shell: bash
         run: |
           ls -lh
-          ls demo_dir_cached -lh
+          ls demo_dir_cached
           tar -zxvf ./demo_dir_cached/demo_dir.tar.gz
