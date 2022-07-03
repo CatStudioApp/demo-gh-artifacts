@@ -48,4 +48,5 @@ jobs:
           mkdir ./unzipped
           tar -xf ./demo_dir_cached/demo_dir.tar.gz --directory ./unzipped
           ls -lh
+          echo "./unzipped:"
           ls ./unzipped
