@@ -39,9 +39,10 @@ jobs:
         name: "Download demo_dir"
         with:
           name: "demo_dir"
-          path: ./demo_dir.tar.gz
+          path: ./demo_dir_cached
       - name: zip
         shell: bash
         run: |
           ls -lh
-          tar -zxvf ./demo_dir.tar.gz
+          ls demo_dir_cached -lh
+          tar -zxvf ./demo_dir_cached/demo_dir.tar.gz
